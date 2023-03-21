@@ -1,0 +1,36 @@
+{
+  "name": "uilib-samples",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "setup": "pnpm install",
+    "eslint": "eslint --ext .js --ignore-path .gitignore .",
+    "build": "infodb-cli runall build:*",
+    "build:lint": "eslint --ext .js --ignore-path .gitignore .",
+    "build:es": "infodb-cli es -i showcase/main.js --source-map --emotion ./showcase/emotion-shim.js",
+    "build:minify": "infodb-cli minify -i showcase/index.html",
+    "serve": "infodb-cli serve"
+  },
+  "author": "mutomob@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.13",
+    "date-fns": "^2.29.3",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2"
+  }
+}
