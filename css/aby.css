@@ -1,4 +1,5 @@
-@import 'default';
+/* @theme aby */
+@import "default";
 
 :root {
     background-color: black;
