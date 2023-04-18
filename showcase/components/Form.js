@@ -17,8 +17,9 @@ const borderCss = css`
 
 const Form = () => {
   return (
-    <Stack css={heightCss}>
-      <FormField label='test' type='text' />
+    <Stack css={heightCss} spacing={2}>
+      <FormField label='text' type='text' />
+      <FormField label='password' type='password' />
       <Typography>TOP Typography</Typography>
       <Spacer css={borderCss} />
       <Typography>This is Test.</Typography>

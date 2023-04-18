@@ -33,6 +33,13 @@ ${({ theme }) => mediaQuery(theme)} {
 }
 `
 
+const CustomTextField = styled(TextField)({
+  '& input:valid:focus + fieldset': {
+    borderLeftWidth: 6,
+    padding: '4px !important'
+  }
+})
+
 const FormField = forwardRef(function formFieldRef ({ label, type, ...props }, ref) {
   const theme = useTheme()
   const matches = useMediaQuery(mediaQuery(theme))
@@ -44,7 +51,15 @@ const FormField = forwardRef(function formFieldRef ({ label, type, ...props }, r
           label
         }
       }
-      return <TextField className='field' fullWidth {...opts} {...props} ref={ref} />
+      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} />
+    } else if (type.toLowerCase() === 'password') {
+      let opts = {}
+      if (matches) {
+        opts = {
+          label
+        }
+      }
+      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type='password' />
     }
     return null
   }, [type, matches])
@@ -52,7 +67,7 @@ const FormField = forwardRef(function formFieldRef ({ label, type, ...props }, r
   return (
     <ResponsiveField>
       <div className='label'>{label}</div>
-      { component }
+      {component}
     </ResponsiveField>
   )
 })
