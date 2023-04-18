@@ -65,12 +65,10 @@ const FormField = forwardRef(function formFieldRef ({ label, type, ...props }, r
   }, [type, matches])
 
   return (
-    <>
-      <ResponsiveField>
-        <div className='label'>{label}</div>
-        {component}
-      </ResponsiveField>
-    </>
+    <ResponsiveField>
+      <div className='label'>{label}</div>
+      {component}
+    </ResponsiveField>
   )
 })
 
