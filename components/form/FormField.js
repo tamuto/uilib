@@ -40,26 +40,19 @@ const CustomTextField = styled(TextField)({
   }
 })
 
-const FormField = forwardRef(function formFieldRef ({ label, type, ...props }, ref) {
+const FormField = forwardRef(function formFieldRef ({ label, type, readOnly, ...props }, ref) {
   const theme = useTheme()
   const matches = useMediaQuery(mediaQuery(theme))
   const component = useMemo(() => {
-    if (type.toLowerCase() === 'text') {
+    const lowerType = type.toLowerCase()
+    if (['text', 'password'].includes(lowerType)) {
       let opts = {}
       if (matches) {
         opts = {
           label
         }
       }
-      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} />
-    } else if (type.toLowerCase() === 'password') {
-      let opts = {}
-      if (matches) {
-        opts = {
-          label
-        }
-      }
-      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type='password' />
+      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type={lowerType} />
     }
     return null
   }, [type, matches])
