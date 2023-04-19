@@ -52,7 +52,7 @@ const FormField = forwardRef(function formFieldRef ({ label, type, disabled, rea
           label
         }
       }
-      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type={lowerType} disabled={disabled} InputProps={{ readonly }} />
+      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type={lowerType} disabled={disabled} InputProps={{ readOnly: readonly }} />
     }
     return null
   }, [type, matches, disabled, readonly])
