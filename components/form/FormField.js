@@ -12,7 +12,7 @@ import {
 } from '@mui/material/styles'
 
 const mediaQuery = theme => theme?.components?.In4UILibs?.breakpoint ?? '@media screen and (max-width: 0px)'
-const requiredLabel = theme => theme?.components?.In4UILibs?.requiredLabel
+const requiredLabel = theme => theme?.components?.In4UILibs?.requiredLabel ?? '(required)'
 
 const ResponsiveField = styled.div`
 display: flex;
