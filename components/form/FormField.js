@@ -41,7 +41,8 @@ const CustomTextField = styled(TextField)({
   }
 })
 
-const FormField = forwardRef(function formFieldRef ({ label, type, error, helperText, disabled, readonly, required, ...props }, ref) {
+const FormField = forwardRef(function formFieldRef ({ label, type, readonly, required, ...props }, ref) {
+  const { error, helperText, disabled } = props
   const theme = useTheme()
   const matches = useMediaQuery(mediaQuery(theme))
   const component = useMemo(() => {
@@ -54,7 +55,7 @@ const FormField = forwardRef(function formFieldRef ({ label, type, error, helper
           label
         }
       }
-      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type={lowerType} error={error} helperText={helperText} disabled={disabled} InputProps={{ readOnly: readonly }} />
+      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type={lowerType} InputProps={{ readOnly: readonly }} />
     }
     return null
   }, [type, matches, error, helperText, disabled, readonly])
