@@ -12,6 +12,7 @@ import {
 } from '@mui/material/styles'
 
 const mediaQuery = theme => theme?.components?.In4UILibs?.breakpoint ?? '@media screen and (max-width: 0px)'
+const requiredLabel = theme => theme?.components?.In4UILibs?.requiredLabel
 
 const ResponsiveField = styled.div`
 display: flex;
@@ -40,7 +41,7 @@ const CustomTextField = styled(TextField)({
   }
 })
 
-const FormField = forwardRef(function formFieldRef ({ label, type, disabled, readonly, ...props }, ref) {
+const FormField = forwardRef(function formFieldRef ({ label, type, disabled, readonly, required, ...props }, ref) {
   const theme = useTheme()
   const matches = useMediaQuery(mediaQuery(theme))
   const component = useMemo(() => {
@@ -48,6 +49,7 @@ const FormField = forwardRef(function formFieldRef ({ label, type, disabled, rea
     if (['text', 'password'].includes(lowerType)) {
       let opts = {}
       if (matches) {
+        label = `${label}${requiredLabel(theme)}`
         opts = {
           label
         }
@@ -59,7 +61,9 @@ const FormField = forwardRef(function formFieldRef ({ label, type, disabled, rea
 
   return (
     <ResponsiveField>
-      <div className='label'>{label}</div>
+      <div className='label'>
+        {label}{required ? requiredLabel(theme) : ''}
+      </div>
       {component}
     </ResponsiveField>
   )
@@ -69,7 +73,8 @@ FormField.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,
-  readonly: PropTypes.bool
+  readonly: PropTypes.bool,
+  required: PropTypes.bool
 }
 
 export default FormField
