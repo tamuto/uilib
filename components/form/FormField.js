@@ -62,7 +62,7 @@ const FormField = forwardRef(function formFieldRef ({ label, type, disabled, rea
   return (
     <ResponsiveField>
       <div className='label'>
-        {label}{required ? requiredLabel(theme) : ''}
+        {label}{required && requiredLabel(theme)}
       </div>
       {component}
     </ResponsiveField>
