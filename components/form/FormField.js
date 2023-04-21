@@ -49,7 +49,7 @@ const FormField = forwardRef(function formFieldRef ({ label, type, disabled, rea
     if (['text', 'password'].includes(lowerType)) {
       let opts = {}
       if (matches) {
-        label = `${label}${requiredLabel(theme)}`
+        label = `${label}${required && requiredLabel(theme)}`
         opts = {
           label
         }
