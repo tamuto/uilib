@@ -5,6 +5,7 @@ import DataTable from '../../components/datarow/DataTable'
 import DataHead from '../../components/datarow/DataHead'
 import DataRow from '../../components/datarow/DataRow'
 import DataCell from '../../components/datarow/DataCell'
+import DataGroup from '../../components/datarow/DataGroup'
 
 const mediaQuery = theme => theme?.components?.In4UILibs?.breakpoint ?? '@media screen and (max-width: 0px)'
 
@@ -43,6 +44,14 @@ const ShowCase = () => {
         width: 100%;
         order: 1;
       }
+      & .grp1 {
+        display: flex;
+        flex-direction: row;
+
+        & .col3 {
+          font-weight: bold;
+        }
+      }
     }
   `
 
@@ -57,8 +66,10 @@ const ShowCase = () => {
       <DataRow>
         <DataCell className='col1'>長いデータはどうなる？ 改行される？</DataCell>
         <DataCell className='col2'>This is Test.</DataCell>
-        <DataCell className='col3'>Cell1-3</DataCell>
-        <DataCell className='col4'>Cell1-4</DataCell>
+        <DataGroup className='grp1'>
+          <DataCell className='col3'>Cell1-3</DataCell>
+          <DataCell className='col4'>Cell1-4</DataCell>
+        </DataGroup>
       </DataRow>
       <DataRow>
         <DataCell className='col1'>Cell2-1</DataCell>
