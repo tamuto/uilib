@@ -27,6 +27,13 @@ align-items: center;
 & .field {
 }
 
+& .Mui-readOnly {
+  background-color: #eeeeee;
+}
+& .Mui-disabled {
+  background-color: #eeeeee;
+}
+
 ${({ theme }) => mediaQuery(theme)} {
   & .label {
     display: none;
@@ -35,27 +42,45 @@ ${({ theme }) => mediaQuery(theme)} {
 `
 
 const CustomTextField = styled(TextField)({
-  '& input:valid:focus + fieldset': {
-    borderLeftWidth: 6,
-    padding: '4px !important'
+  '& .Mui-focused > fieldset': {
+    borderLeftWidth: '6px !important',
+    borderLeftStyle: 'solid'
   }
 })
 
-const FormField = forwardRef(function formFieldRef ({ label, type, readonly, required, ...props }, ref) {
+const FormField = forwardRef(function formFieldRef ({ children, label, type, readonly, required, ...props }, ref) {
   const { error, helperText, disabled } = props
   const theme = useTheme()
   const matches = useMediaQuery(mediaQuery(theme))
   const component = useMemo(() => {
     const lowerType = type.toLowerCase()
-    if (['text', 'password'].includes(lowerType)) {
-      let opts = {}
-      if (matches) {
-        label = `${label}${required && requiredLabel(theme)}`
-        opts = {
-          label
-        }
+    let opts = {
+      ref,
+      type: lowerType,
+      className: 'field',
+      fullWidth: true,
+      InputProps: {
+        readOnly: readonly
       }
-      return <CustomTextField className='field' fullWidth {...opts} {...props} ref={ref} type={lowerType} InputProps={{ readOnly: readonly }} />
+    }
+    if (matches) {
+      if (required) {
+        label = `${label}${requiredLabel(theme)}`
+      }
+      opts = {
+        ...opts,
+        label
+      }
+    }
+    if (['text', 'password'].includes(lowerType)) {
+      return <CustomTextField {...opts} {...props} />
+    }
+    if (lowerType === 'select') {
+      return (
+        <CustomTextField select {...opts} {...props}>
+          {children}
+        </CustomTextField>
+      )
     }
     return null
   }, [type, matches, error, helperText, disabled, readonly])
@@ -71,6 +96,7 @@ const FormField = forwardRef(function formFieldRef ({ label, type, readonly, req
 })
 
 FormField.propTypes = {
+  children: PropTypes.node,
   label: PropTypes.string,
   type: PropTypes.string,
   error: PropTypes.bool,
