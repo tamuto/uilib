@@ -83,7 +83,7 @@ const FormField = forwardRef(function formFieldRef ({ children, label, type, rea
       )
     }
     return null
-  }, [type, matches, error, helperText, disabled, readonly, value])
+  }, [type, matches, error, helperText, disabled, readonly, value, children])
 
   return (
     <ResponsiveField>
@@ -99,7 +99,7 @@ FormField.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
   type: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.any,
   error: PropTypes.bool,
   helperText: PropTypes.string,
   disabled: PropTypes.bool,
