@@ -21,6 +21,7 @@ const Form = () => {
     <Stack css={heightCss} spacing={2}>
       <FormField label='text' type='text' />
       <FormField label='text' type='text' required />
+      <FormField label='number' type='number' />
       <FormField label='password' type='password' />
       <FormField label='disabled' type='text' value='disabled' disabled />
       <FormField label='readonly' type='text' value='readonly' readonly />

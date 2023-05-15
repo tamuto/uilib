@@ -63,6 +63,9 @@ const FormField = forwardRef(function formFieldRef ({ children, label, type, rea
         readOnly: readonly
       }
     }
+    if (lowerType === 'number') {
+      opts.InputProps.inputMode = 'numeric'
+    }
     if (matches) {
       if (required) {
         label = `${label}${requiredLabel(theme)}`
@@ -72,7 +75,7 @@ const FormField = forwardRef(function formFieldRef ({ children, label, type, rea
         label
       }
     }
-    if (['text', 'password'].includes(lowerType)) {
+    if (['text', 'password', 'number'].includes(lowerType)) {
       return <CustomTextField {...opts} {...props} />
     }
     if (lowerType === 'select') {
