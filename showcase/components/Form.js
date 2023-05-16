@@ -52,7 +52,7 @@ const Form = () => {
       </FormField>
       <FormField label='switch' type='switch' />
       <FormField label='switch' type='switch' required />
-      <FormField label='readonly switch' type='switch' readonly checked={true} />
+      <FormField label='readonly switch' type='switch' readonly value={true} />
       <FormField label='disabled switch' type='switch' disabled />
       <Typography>TOP Typography</Typography>
       <Spacer css={borderCss} />

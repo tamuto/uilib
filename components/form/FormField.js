@@ -53,8 +53,7 @@ const CustomTextField = styled(TextField)({
   }
 })
 
-const FormField = forwardRef(function formFieldRef ({ children, label, type, readonly, required, disabled, error, helperText, ...props }, ref) {
-  const { value, checked } = props
+const FormField = forwardRef(function formFieldRef ({ children, label, type, readonly, required, disabled, error, helperText, value, ...props }, ref) {
   const theme = useTheme()
   const matches = useMediaQuery(mediaQuery(theme))
 
@@ -98,9 +97,10 @@ const FormField = forwardRef(function formFieldRef ({ children, label, type, rea
       disabled,
       error
     }
+    props.checked = value
     if (readonly) {
       // onChangeを上書き
-      props.checked = checked ?? false
+      props.checked = value ?? false
       props.onChange = () => {}
     }
     return (
@@ -145,7 +145,7 @@ const FormField = forwardRef(function formFieldRef ({ children, label, type, rea
       return buildCustomTextField(lowerType)
     }
     return null
-  }, [type, matches, error, helperText, disabled, readonly, value, checked, children])
+  }, [type, matches, error, helperText, disabled, readonly, value, children])
 
   return (
     <ResponsiveField>
@@ -166,8 +166,7 @@ FormField.propTypes = {
   helperText: PropTypes.string,
   disabled: PropTypes.bool,
   readonly: PropTypes.bool,
-  required: PropTypes.bool,
-  checked: PropTypes.bool
+  required: PropTypes.bool
 }
 
 export default FormField
