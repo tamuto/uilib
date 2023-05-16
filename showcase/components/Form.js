@@ -9,7 +9,6 @@ import FormField from '../../components/form/FormField'
 import Spacer from '../../components/form/Spacer'
 
 const heightCss = css`
-  height: 400px;
 `
 
 const borderCss = css`
@@ -22,6 +21,8 @@ const Form = () => {
       <FormField label='text' type='text' />
       <FormField label='text' type='text' required />
       <FormField label='number' type='number' />
+      <FormField label='date' type='date' />
+      <FormField label='multiline' type='multiline' rows={3} error helperText='これはエラーです。' />
       <FormField label='password' type='password' />
       <FormField label='disabled' type='text' value='disabled' disabled />
       <FormField label='readonly' type='text' value='readonly' readonly />
@@ -49,6 +50,10 @@ const Form = () => {
         <MenuItem value='3'>Test3</MenuItem>
         <MenuItem value='4'>Test4</MenuItem>
       </FormField>
+      <FormField label='switch' type='switch' />
+      <FormField label='switch' type='switch' required />
+      <FormField label='readonly switch' type='switch' readonly checked={true} />
+      <FormField label='disabled switch' type='switch' disabled />
       <Typography>TOP Typography</Typography>
       <Spacer css={borderCss} />
       <Typography>This is Test.</Typography>
