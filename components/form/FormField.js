@@ -66,6 +66,7 @@ const FormField = forwardRef(function formFieldRef ({ children, label, type, rea
       disabled,
       error,
       helperText,
+      value,
       InputProps: {
         readOnly: readonly
       }
