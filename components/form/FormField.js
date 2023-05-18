@@ -29,6 +29,12 @@ align-items: center;
   margin-right: 16px;
 }
 
+& .required-label {
+  font-size: 0.3em;
+  margin-left: 3px;
+  color: red;
+}
+
 & .field {
 }
 
@@ -151,7 +157,7 @@ const FormField = forwardRef(function formFieldRef ({ children, label, type, rea
   return (
     <ResponsiveField>
       <div className='label'>
-        {label}{required && requiredLabel(theme)}
+        {label}{required && <span className='required-label'>{requiredLabel(theme)}</span>}
       </div>
       {component}
     </ResponsiveField>

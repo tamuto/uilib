@@ -26,6 +26,12 @@ align-items: center;
   margin-right: 16px;
 }
 
+& .required-label {
+  font-size: 0.3em;
+  margin-left: 3px;
+  color: red;
+}
+
 & .field {
 }
 
@@ -117,6 +123,9 @@ const buildSwitchField = (matches, theme, label, disabled, readonly, required, f
   if (readonly) {
     props.onChange = () => {}
   }
+  if (matches & required) {
+    label = `${label}${requiredLabel(theme)}`
+  }
   return (
     <FormControl {...opts}>
       {
@@ -127,7 +136,7 @@ const buildSwitchField = (matches, theme, label, disabled, readonly, required, f
             checked={field.value}
             {...props}
           />}
-          label={`${label}${requiredLabel(theme)}`} labelPlacement='end' />
+          label={label} labelPlacement='end' />
       }
       {
         !matches &&
@@ -170,7 +179,7 @@ const HookFormField = ({ children, type, label, name, control, rules, disabled, 
   return (
     <ResponsiveField>
       <div className='label'>
-        {label}{required && requiredLabel(theme)}
+        {label}{required && <span className='required-label'>{requiredLabel(theme)}</span>}
       </div>
       {component}
     </ResponsiveField>
