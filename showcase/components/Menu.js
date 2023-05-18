@@ -10,6 +10,7 @@ const Menu = () => {
       <Button variant='contained' component={Link} to='/unsplash'>Unsplash</Button>
       <Button variant='contained' component={Link} to='/datarow'>DataRow</Button>
       <Button variant='contained' component={Link} to='/form'>Form</Button>
+      <Button variant='contained' component={Link} to='/hooked'>React Hook Form</Button>
     </Stack>
   )
 }
