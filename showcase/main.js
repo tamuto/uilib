@@ -18,6 +18,8 @@ import Unsplash from './components/Unsplash'
 import DataRow from './components/DataRow'
 import Form from './components/Form'
 import HookedForm from './components/HookedForm'
+import NoLabelForm from './components/NoLabelForm'
+import NoLabelHookedForm from './components/NoLabelHookedForm'
 
 const theme = createTheme({
   components: {
@@ -56,6 +58,8 @@ root.render(
             <Route path='/datarow' element={<DataRow />} />
             <Route path='/form' element={<Form />} />
             <Route path='/hooked' element={<HookedForm />} />
+            <Route path='/nlform' element={<NoLabelForm />} />
+            <Route path='/nlhooked' element={<NoLabelHookedForm />} />
           </Routes>
         </HashRouter>
       </Container>
