@@ -154,6 +154,12 @@ const buildSwitchField = (matches, theme, label, disabled, readonly, required, f
   )
 }
 
+const buildController = (children, control, name, rules) => {
+  return (
+    <Controller name={name} control={control} rules={rules} as={children} />
+  )
+}
+
 const HookFormField = ({ children, type, label, nolabel, name, control, rules, disabled, readonly, ...props }) => {
   const theme = useTheme()
   const matches = nolabel ?? useMediaQuery(mediaQuery(theme))
@@ -170,6 +176,10 @@ const HookFormField = ({ children, type, label, nolabel, name, control, rules, d
     }
     if (lowerType === 'switch') {
       return buildSwitchField(matches, theme, label, disabled, readonly, required, field, fieldState, props)
+    }
+    if (lowerType === 'controller') {
+      // 直接コントローラーで構築する
+      return buildController(children, control, name, rules)
     }
     return null
   }
