@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { useController, Controller } from 'react-hook-form'
+import { useController } from 'react-hook-form'
 import {
   TextField,
   Switch,
   useMediaQuery,
   FormControl,
   FormHelperText,
-  FormControlLabel
+  FormControlLabel,
+  RadioGroup
 } from '@mui/material'
 import {
   useTheme
@@ -154,9 +155,27 @@ const buildSwitchField = (matches, theme, label, disabled, readonly, required, f
   )
 }
 
-const buildController = (children, control, name, rules) => {
+const buildRadioField = (children, disabled, readonly, required, field, fieldState, props) => {
+  const opts = {
+    fullWidth: true,
+    className: 'field',
+    required,
+    disabled,
+    error: fieldState.invalid
+  }
+  if (readonly) {
+    props.onChange = () => {}
+  }
   return (
-    <Controller name={name} control={control} rules={rules} as={children} />
+    <FormControl {...opts}>
+      <RadioGroup name={field.name} value={field.value} onChange={field.onChange} {...props}>
+        {children}
+      </RadioGroup>
+      {
+        fieldState.error &&
+        <FormHelperText>{fieldState.error.message}</FormHelperText>
+      }
+    </FormControl>
   )
 }
 
@@ -177,9 +196,8 @@ const HookFormField = ({ children, type, label, nolabel, name, control, rules, d
     if (lowerType === 'switch') {
       return buildSwitchField(matches, theme, label, disabled, readonly, required, field, fieldState, props)
     }
-    if (lowerType === 'controller') {
-      // 直接コントローラーで構築する
-      return buildController(children, control, name, rules)
+    if (lowerType === 'radio') {
+      return buildRadioField(children, disabled, readonly, required, field, fieldState, props)
     }
     return null
   }
