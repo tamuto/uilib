@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { useController } from 'react-hook-form'
+import { useController, Controller } from 'react-hook-form'
 import {
   TextField,
   Switch,
