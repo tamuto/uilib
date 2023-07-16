@@ -9,6 +9,7 @@ import {
 } from '@mui/material'
 
 import HookFormField from '../../components/form/HookFormField'
+import FormFieldSet from '../../components/form/FormFieldSet'
 
 const HookedForm = () => {
   const onSubmit = (data) => {
@@ -37,14 +38,16 @@ const HookedForm = () => {
 
   return (
     <Stack component='form' spacing={2} noValidate onSubmit={handleSubmit(onSubmit)}>
-      <HookFormField type='text' name='text1' label='text' control={control} />
-      <HookFormField type='text' name='text2' label='text' control={control} rules={{ required: 'この値は必須ですよ。' }} />
-      <HookFormField type='number' name='text3' label='number' control={control} />
-      <HookFormField type='date' name='text4' label='date' control={control} />
+      <FormFieldSet label='text fields'>
+        <HookFormField type='text' name='text1' label='text' control={control} />
+        <HookFormField type='text' name='text2' label='text' control={control} rules={{ required: 'この値は必須ですよ。' }} />
+        <HookFormField type='number' name='text3' label='number' control={control} />
+        <HookFormField type='date' name='text4' label='date' control={control} />
+        <HookFormField type='password' name='password' label='password' control={control} />
+        <HookFormField type='text' name='text6' label='disabled' control={control} disabled />
+        <HookFormField type='text' name='text7' label='readonly' control={control} readonly />
+      </FormFieldSet>
       <HookFormField type='multiline' name='text5' label='multiline' control={control} rows={3} />
-      <HookFormField type='password' name='password' label='password' control={control} />
-      <HookFormField type='text' name='text6' label='disabled' control={control} disabled />
-      <HookFormField type='text' name='text7' label='readonly' control={control} readonly />
       <HookFormField type='select' name='sel1' label='select' control={control}>
         <MenuItem value='1'>Test1</MenuItem>
         <MenuItem value='2'>Test2</MenuItem>
