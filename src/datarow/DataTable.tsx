@@ -61,12 +61,10 @@ type DataTableProps = {
   className?: string
 }
 
-const DataTable: FC<DataTableProps> = ({ children, className, ...props }) => {
+export const DataTable: FC<DataTableProps> = ({ children, className, ...props }) => {
   return (
     <StyledDataTable className={`In4DataTable ${className ?? ''}`} {...props}>
       {children}
     </StyledDataTable>
   )
 }
-
-export default DataTable

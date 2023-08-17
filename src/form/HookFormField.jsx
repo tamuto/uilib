@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { useController } from 'react-hook-form'
 import {
@@ -13,16 +12,14 @@ import {
 import {
   useTheme
 } from '@mui/material/styles'
-
-const mediaQuery = theme => theme?.components?.In4UILibs?.breakpoint ?? '@media screen and (max-width: 0px)'
-const requiredLabel = theme => theme?.components?.In4UILibs?.requiredLabel ?? '(required)'
+import { mediaQuery, requiredLabel, formFieldWidth } from '../utils/mediaQuery'
 
 const ResponsiveField = styled.div`
 display: flex;
 align-items: center;
 
 & .label {
-  width: ${({ theme }) => theme?.components?.In4FormField?.defaultProps?.width ?? '220px'};
+  width: ${formFieldWidth};
   text-align: right;
   margin-right: 16px;
 }
@@ -179,7 +176,7 @@ const buildRadioField = (children, disabled, readonly, required, field, fieldSta
   )
 }
 
-const HookFormField = ({ children, type, label, nolabel, name, control, rules, disabled, readonly, ...props }) => {
+export const HookFormField = ({ children, type, label, nolabel, name, control, rules, disabled, readonly, ...props }) => {
   const theme = useTheme()
   const matches = nolabel ?? useMediaQuery(mediaQuery(theme))
   const { field, fieldState } = useController({ control, name, rules })
@@ -217,16 +214,14 @@ const HookFormField = ({ children, type, label, nolabel, name, control, rules, d
     </ResponsiveField>
   )
 }
-HookFormField.propTypes = {
-  children: PropTypes.node,
-  type: PropTypes.string,
-  label: PropTypes.string,
-  nolabel: PropTypes.bool,
-  control: PropTypes.object,
-  name: PropTypes.string,
-  rules: PropTypes.object,
-  disabled: PropTypes.bool,
-  readonly: PropTypes.bool
-}
-
-export default HookFormField
+// HookFormField.propTypes = {
+//   children: PropTypes.node,
+//   type: PropTypes.string,
+//   label: PropTypes.string,
+//   nolabel: PropTypes.bool,
+//   control: PropTypes.object,
+//   name: PropTypes.string,
+//   rules: PropTypes.object,
+//   disabled: PropTypes.bool,
+//   readonly: PropTypes.bool
+// }

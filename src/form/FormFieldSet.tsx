@@ -33,7 +33,7 @@ type FormFieldSetProps = {
   nolabel?: boolean
 }
 
-const FormFieldSet: FC<FormFieldSetProps> = ({ children, label, nolabel, ...props }) => {
+export const FormFieldSet: FC<FormFieldSetProps> = ({ children, label, nolabel, ...props }) => {
   if (nolabel) {
     return (
       <div className='field'>
@@ -53,5 +53,3 @@ const FormFieldSet: FC<FormFieldSetProps> = ({ children, label, nolabel, ...prop
     </ResponsiveField>
   )
 }
-
-export default FormFieldSet

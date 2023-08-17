@@ -4,7 +4,7 @@ import {
 
 import CircularProgress from '@mui/material/CircularProgress'
 
-const Spinner = () => {
+export const Spinner = () => {
   return (
     <Backdrop
       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -14,5 +14,3 @@ const Spinner = () => {
     </Backdrop>
   )
 }
-
-export default Spinner

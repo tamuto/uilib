@@ -5,12 +5,10 @@ type DataHeadProps = {
   className?: string
 }
 
-const DataHead: FC<DataHeadProps> = ({ children, className, ...props }) => {
+export const DataHead: FC<DataHeadProps> = ({ children, className, ...props }) => {
   return (
     <div className={`In4DataHead ${className ?? ''}`} {...props}>
       {children}
     </div>
   )
 }
-
-export default DataHead

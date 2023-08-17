@@ -5,7 +5,7 @@ type DataCellProps = {
   children?: ReactNode,
 }
 
-const DataCell: FC<DataCellProps> = ({ children, className, ...props }) => {
+export const DataCell: FC<DataCellProps> = ({ children, className, ...props }) => {
   // const mouseEnter = (e) => {
   //   console.log(e)
   //   const text = e.target.innerText
@@ -18,5 +18,3 @@ const DataCell: FC<DataCellProps> = ({ children, className, ...props }) => {
     </div>
   )
 }
-
-export default DataCell

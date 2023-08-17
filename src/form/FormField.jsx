@@ -1,5 +1,4 @@
 import { forwardRef, useMemo } from 'react'
-import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { mediaQuery, requiredLabel, formFieldWidth } from '../utils/mediaQuery'
 
@@ -57,7 +56,7 @@ const CustomTextField = styled(TextField)({
   }
 })
 
-const FormField = forwardRef(function formFieldRef ({ children, label, nolabel, type, readonly, required, disabled, error, helperText, value, ...props }, ref) {
+export const FormField = forwardRef(function formFieldRef ({ children, label, nolabel, type, readonly, required, disabled, error, helperText, value, ...props }, ref) {
   const theme = useTheme()
   const matches = nolabel ?? useMediaQuery(mediaQuery(theme))
 
@@ -165,17 +164,15 @@ const FormField = forwardRef(function formFieldRef ({ children, label, nolabel, 
     </ResponsiveField>
   )
 })
-FormField.propTypes = {
-  children: PropTypes.node,
-  label: PropTypes.string,
-  nolabel: PropTypes.bool,
-  type: PropTypes.string,
-  value: PropTypes.any,
-  error: PropTypes.bool,
-  helperText: PropTypes.string,
-  disabled: PropTypes.bool,
-  readonly: PropTypes.bool,
-  required: PropTypes.bool
-}
-
-export default FormField
+// FormField.propTypes = {
+//   children: PropTypes.node,
+//   label: PropTypes.string,
+//   nolabel: PropTypes.bool,
+//   type: PropTypes.string,
+//   value: PropTypes.any,
+//   error: PropTypes.bool,
+//   helperText: PropTypes.string,
+//   disabled: PropTypes.bool,
+//   readonly: PropTypes.bool,
+//   required: PropTypes.bool
+// }

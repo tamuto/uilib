@@ -8,7 +8,7 @@ type DataGroupProps = {
   children?: ReactNode
 }
 
-const DataGroup: FC<DataGroupProps> = ({ children, className, ...props }) => {
+export const DataGroup: FC<DataGroupProps> = ({ children, className, ...props }) => {
   const theme = useTheme()
   const matches = useMediaQuery(mediaQuery(theme))
 
@@ -21,5 +21,3 @@ const DataGroup: FC<DataGroupProps> = ({ children, className, ...props }) => {
   }
   return children
 }
-
-export default DataGroup

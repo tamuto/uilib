@@ -5,9 +5,7 @@ type FormBarProps = {
   children: ReactNode
 }
 
-const FormBar: FC<FormBarProps> = styled('form')`
+export const FormBar: FC<FormBarProps> = styled('form')`
   display: flex;
   gap: 20px 16px;
 `
-
-export default FormBar
