@@ -1,3 +1,6 @@
+/components
+/docs
 /node_modules
 /src
+/showcase
 tsconfig.json
