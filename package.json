@@ -1,37 +1,39 @@
 {
-  "name": "uilib-samples",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.html",
-  "scripts": {
-    "setup": "pnpm install",
-    "eslint": "eslint --ext .js --ignore-path .gitignore .",
-    "build": "infodb-cli runall build:*",
-    "build:lint": "eslint --ext .js --ignore-path .gitignore .",
-    "build:es": "infodb-cli es -i showcase/main.js --source-map --emotion ./showcase/emotion-shim.js",
-    "build:minify": "infodb-cli minify -i showcase/index.html",
-    "serve": "infodb-cli serve"
-  },
-  "author": "mutomob@gmail.com",
+  "name": "@infodb/uilibs",
+  "version": "0.1.0",
+  "description": "UI Library",
+  "author": "tamuto <tamuto@infodb.jp>",
   "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamuto/uilib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tamuto/uilib/issues"
+  },
+  "homepage": "https://github.com/tamuto/uilib#readme",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.11.11",
-    "@mui/material": "^5.11.13",
-    "date-fns": "^2.29.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/material": "^5.14.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.9",
-    "react-router-dom": "^6.9.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "eslint": "^8.36.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.32.2"
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
