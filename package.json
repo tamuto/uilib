@@ -1,11 +1,12 @@
 {
   "name": "@infodb/uilib",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "UI Library",
   "author": "tamuto <tamuto@infodb.jp>",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist-cjs/index.js",
+  "module": "dist-esm/index.js",
+  "types": "dist-cjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tamuto/uilib.git"
@@ -15,8 +16,10 @@
   },
   "homepage": "https://github.com/tamuto/uilib#readme",
   "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build"
+    "build": "infodb-cli runall build:*",
+    "build:cjs": "tsc --project . --module commonjs --outDir ./dist-cjs",
+    "build:esm": "tsc --project . --module es2015 --outDir ./dist-esm --moduleResolution nodenext",
+    "prepare": "pnpm run build"
   },
   "dependencies": {
     "@emotion/styled": "^11.11.0",
