@@ -38,20 +38,28 @@ const StyledDataTable = styled.div`
 
 & .In4DataCell {
   padding: 0.5em 1em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  position: relative;
   margin-top: auto;
   margin-bottom: auto;
 
-  .tooltip {
-    position: relative;
-    top: -20px;
-    left: 20px;
+  .content {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .tooltiptext {
-    position: fixed;
+  .tooltip {
+    display: none;
+  }
+}
+
+& .In4DataCell.ellipsis:hover {
+  .tooltip {
     display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: max-content;
     z-index: 1;
     padding: 5px;
     border-radius: 6px;

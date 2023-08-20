@@ -1,4 +1,4 @@
-import { FC, ReactNode, MouseEvent, useState } from 'react'
+import { FC, ReactNode, useEffect, useRef } from 'react'
 
 type DataCellProps = {
   className?: string,
@@ -6,38 +6,31 @@ type DataCellProps = {
 }
 
 type TooltipProps = {
-  value: string
+  children: ReactNode
 }
 
-const Tooltip: FC<TooltipProps> = ({ value }) => {
-  return (
-    <div className="tooltip">
-      <span className="tooltiptext" dangerouslySetInnerHTML={{__html: value}}></span>
-    </div>
-  )
-}
+const Tooltip: FC<TooltipProps> = ({ children }) => (
+  <div className="tooltip">{children}</div>
+)
 
 export const DataCell: FC<DataCellProps> = ({ children, className, ...props }) => {
-  const [tooltip, setTooltip] = useState<string|null>(null)
-  const mouseEnter = (e: MouseEvent<HTMLElement>) => {
-    if (e.currentTarget.offsetWidth < e.currentTarget.scrollWidth) {
-      setTooltip(e.currentTarget.innerHTML)
+  const contentRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    if (contentRef.current) {
+      if (contentRef.current.offsetWidth < contentRef.current.scrollWidth) {
+        contentRef.current.parentElement!.classList.add('ellipsis')
+      }
     }
-  }
-  const mouseLeave = () => {
-    setTooltip(null)
-  }
+  }, [])
 
   return (
-    <div
-      className={`In4DataCell ${className ?? ''}`}
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
-      {...props}
-    >
-      {children}
+    <div className={`In4DataCell ${className ?? ''}`} {...props}>
+      <span ref={contentRef} className='content'>
+        {children}
+      </span>
       {
-        tooltip && <Tooltip value={tooltip} />
+        children && <Tooltip>{children}</Tooltip>
       }
     </div>
   )

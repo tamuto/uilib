@@ -94,7 +94,10 @@ const ShowCase = () => {
         <DataCell className='col4'>Cell4-4</DataCell>
       </DataRow>
       <DataRow>
-        <DataCell className='col1'>Cell5-1</DataCell>
+        <DataCell className='col1'>
+          <div>Cell5-1</div>
+          <div>Something Content...</div>
+        </DataCell>
         <DataCell className='col2'>Cell5-2</DataCell>
         <DataCell className='col3'>Cell5-3</DataCell>
         <DataCell className='col4'>Cell5-4</DataCell>
