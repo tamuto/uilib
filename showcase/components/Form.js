@@ -5,8 +5,10 @@ import {
   Typography
 } from '@mui/material'
 
-import FormField from '../../components/form/FormField'
-import Spacer from '../../components/form/Spacer'
+import {
+  FormField,
+  Spacer
+} from '~/src'
 
 const heightCss = css`
 `

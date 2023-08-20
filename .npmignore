@@ -1,6 +1,8 @@
 /components
+/dist
 /docs
 /node_modules
 /src
 /showcase
 tsconfig.json
+webpack.config.js

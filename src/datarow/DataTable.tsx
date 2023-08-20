@@ -43,6 +43,22 @@ const StyledDataTable = styled.div`
   text-overflow: ellipsis;
   margin-top: auto;
   margin-bottom: auto;
+
+  .tooltip {
+    position: relative;
+    top: -20px;
+    left: 20px;
+  }
+  .tooltiptext {
+    position: fixed;
+    display: inline-block;
+    z-index: 1;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+  }
 }
 
 ${({ theme }) => mediaQuery(theme)} {

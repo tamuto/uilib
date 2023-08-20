@@ -14,7 +14,6 @@ import {
 } from '@mui/material'
 
 import Menu from './components/Menu'
-import Unsplash from './components/Unsplash'
 import DataRow from './components/DataRow'
 import Form from './components/Form'
 import HookedForm from './components/HookedForm'
@@ -54,7 +53,6 @@ root.render(
         <HashRouter>
           <Routes>
             <Route path='/' element={<Menu />} />
-            <Route path='/unsplash' element={<Unsplash />} />
             <Route path='/datarow' element={<DataRow />} />
             <Route path='/form' element={<Form />} />
             <Route path='/hooked' element={<HookedForm />} />

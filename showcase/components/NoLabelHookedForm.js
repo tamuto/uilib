@@ -8,7 +8,9 @@ import {
   Button
 } from '@mui/material'
 
-import HookFormField from '../../components/form/HookFormField'
+import {
+  HookFormField,
+} from '~/src'
 
 const HookedForm = () => {
   const onSubmit = (data) => {

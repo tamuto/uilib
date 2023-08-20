@@ -1,11 +1,13 @@
 import { css } from '@emotion/react'
 import { useTheme } from '@mui/material/styles'
 
-import DataTable from '../../components/datarow/DataTable'
-import DataHead from '../../components/datarow/DataHead'
-import DataRow from '../../components/datarow/DataRow'
-import DataCell from '../../components/datarow/DataCell'
-import DataGroup from '../../components/datarow/DataGroup'
+import {
+  DataTable,
+  DataHead,
+  DataRow,
+  DataCell,
+  DataGroup
+} from '~/src'
 
 const mediaQuery = theme => theme?.components?.In4UILibs?.breakpoint ?? '@media screen and (max-width: 0px)'
 
@@ -67,7 +69,9 @@ const ShowCase = () => {
         <DataCell className='col1'>長いデータはどうなる？ 改行される？</DataCell>
         <DataCell className='col2'>This is Test.</DataCell>
         <DataGroup className='grp1'>
-          <DataCell className='col3'>Cell1-3</DataCell>
+          <DataCell className='col3'>
+            <h1>Cell1-3</h1>
+          </DataCell>
           <DataCell className='col4'>Cell1-4</DataCell>
         </DataGroup>
       </DataRow>

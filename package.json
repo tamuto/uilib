@@ -1,6 +1,6 @@
 {
   "name": "@infodb/uilib",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "UI Library",
   "author": "tamuto <tamuto@infodb.jp>",
   "license": "MIT",
@@ -19,7 +19,10 @@
     "build": "infodb-cli runall build:*",
     "build:cjs": "tsc --project . --module commonjs --outDir ./dist-cjs",
     "build:esm": "tsc --project . --module es2015 --outDir ./dist-esm --moduleResolution nodenext",
-    "prepare": "pnpm run build"
+    "prepare": "pnpm run build",
+    "showcase": "webpack --config webpack.config.js --mode development",
+    "watch": "webpack -w --config webpack.config.js --mode development",
+    "serve": "infodb-cli serve"
   },
   "dependencies": {
     "@emotion/styled": "^11.11.0",
@@ -28,9 +31,18 @@
     "react-hook-form": "^7.45.4"
   },
   "devDependencies": {
+    "@emotion/react": "^11.11.1",
+    "@infodb/infodb-cli": "^0.14.0",
+    "@swc/core": "^1.3.78",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
-    "typescript": "^5.1.6"
+    "html-webpack-plugin": "^5.5.3",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0",
+    "swc-loader": "^0.2.3",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "publishConfig": {
     "access": "public"
