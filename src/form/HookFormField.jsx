@@ -176,6 +176,19 @@ const buildRadioField = (children, disabled, readonly, required, field, fieldSta
   )
 }
 
+/**
+ * @param {*=} children
+ * @param {string} type
+ * @param {string} label
+ * @param {boolean=} nolabel
+ * @param {string} name
+ * @param {object} control
+ * @param {object=} rules
+ * @param {boolean=} disabled
+ * @param {boolean=} readonly
+ * @param {object=} props
+ * @returns
+ */
 export const HookFormField = ({ children, type, label, nolabel, name, control, rules, disabled, readonly, ...props }) => {
   const theme = useTheme()
   const matches = nolabel ?? useMediaQuery(mediaQuery(theme))
