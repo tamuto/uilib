@@ -12,5 +12,7 @@ export * from './form/HookFormField'
 export * from './form/LabelText'
 export * from './form/Spacer'
 
-import { initIn4UILib } from './utils/theme'
-export { initIn4UILib }
+import { initIn4UILib, defaults } from './utils/theme'
+
+const mediaQuery = defaults.mediaQuery
+export { initIn4UILib, mediaQuery }
