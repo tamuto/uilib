@@ -11,6 +11,7 @@ const dataTableHeaderBgColor = () => defaults.dataTable!.headerBgColor!
 const dataTableAlternativeColor = () => defaults.dataTable!.alternativeColor!
 const dataTableAlternativeBgColor = () => defaults.dataTable!.alternativeBgColor!
 const labelTextColor = () => defaults.labelText!.color!
+const labelTextVariant = () => defaults.labelText!.variant!
 
 export {
   mediaQuery, requiredLabel, formFieldWidth,
@@ -21,5 +22,6 @@ export {
   dataTableHeaderBgColor,
   dataTableAlternativeColor,
   dataTableAlternativeBgColor,
-  labelTextColor
+  labelTextColor,
+  labelTextVariant
 }

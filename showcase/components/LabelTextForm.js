@@ -12,7 +12,8 @@ const LabelTextForm = () => {
       <LabelText label='ラベル' text='テキスト内容' />
       <LabelText label='あいうえかきくけこ' text='１２３４５６７８９０' />
       <LabelText label='名前' text='UILib太郎' />
-      <LabelText label='電 話 番 号' text='00-0000-0000' />
+      <LabelText label='電 話 番 号' text='00-0000-0000' variant='standard' />
+      <LabelText label='メールアドレス' text='****@****.***' variant='compact' />
     </Stack>
   )
 }

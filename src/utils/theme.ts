@@ -11,6 +11,7 @@ type dataTableOptions = {
 
 type labelTextOptions = {
   color?: string
+  variant?: 'standard' | 'compact'
 }
 
 type Options = {
@@ -35,7 +36,8 @@ export const defaults: Options = {
     alternativeBgColor: 'inherit'
   },
   labelText: {
-    color: 'grey'
+    color: 'grey',
+    variant: 'standard'
   }
 }
 
