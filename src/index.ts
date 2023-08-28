@@ -11,3 +11,6 @@ export * from './form/FormFieldSet'
 export * from './form/HookFormField'
 export * from './form/LabelText'
 export * from './form/Spacer'
+
+import { initIn4UILib } from './utils/theme'
+export { initIn4UILib }

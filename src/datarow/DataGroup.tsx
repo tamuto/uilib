@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react'
 import { useMediaQuery } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
 import { mediaQuery } from '../utils/mediaQuery'
 
 type DataGroupProps = {
@@ -9,8 +8,7 @@ type DataGroupProps = {
 }
 
 export const DataGroup: FC<DataGroupProps> = ({ children, className, ...props }) => {
-  const theme = useTheme()
-  const matches = useMediaQuery(mediaQuery(theme))
+  const matches = useMediaQuery(mediaQuery())
 
   if (matches) {
     return (
