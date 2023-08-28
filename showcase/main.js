@@ -19,6 +19,7 @@ import Form from './components/Form'
 import HookedForm from './components/HookedForm'
 import NoLabelForm from './components/NoLabelForm'
 import NoLabelHookedForm from './components/NoLabelHookedForm'
+import LabelTextForm from './components/LabelTextForm'
 
 const theme = createTheme({
   components: {
@@ -28,6 +29,11 @@ const theme = createTheme({
     In4FormField: {
       defaultProps: {
         width: '220px'
+      }
+    },
+    In4LabelText: {
+      defaultProps: {
+        textColor: 'blue'
       }
     },
     In4DataTable: {
@@ -58,6 +64,7 @@ root.render(
             <Route path='/hooked' element={<HookedForm />} />
             <Route path='/nlform' element={<NoLabelForm />} />
             <Route path='/nlhooked' element={<NoLabelHookedForm />} />
+            <Route path='/labeltext' element={<LabelTextForm />} />
           </Routes>
         </HashRouter>
       </Container>

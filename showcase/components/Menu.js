@@ -12,6 +12,7 @@ const Menu = () => {
       <Button variant='contained' component={Link} to='/hooked'>React Hook Form</Button>
       <Button variant='contained' component={Link} to='/nlform'>NoLabel Form</Button>
       <Button variant='contained' component={Link} to='/nlhooked'>NoLabel React Hook Form</Button>
+      <Button variant='contained' component={Link} to='/labeltext'>Label Text Form</Button>
     </Stack>
   )
 }

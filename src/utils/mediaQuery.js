@@ -8,6 +8,7 @@ const dataTableHeaderColor = ({ theme }) => theme?.components?.In4DataTable?.def
 const dataTableHeaderBgColor = ({ theme }) => theme?.components?.In4DataTable?.defaultProps?.headerBgColor ?? 'lightgrey'
 const dataTableAlternativeColor = ({ theme }) => theme?.components?.In4DataTable?.defaultProps?.alternativeColor ?? 'inherit'
 const dataTableAlternativeBgColor = ({ theme }) => theme?.components?.In4DataTable?.defaultProps?.alternativeBgColor ?? 'inherit'
+const labelTextColor = ({ theme }) => theme?.components?.In4LabelText?.defaultProps?.textColor ?? 'grey'
 
 export {
   mediaQuery, requiredLabel, formFieldWidth,
@@ -17,5 +18,6 @@ export {
   dataTableHeaderColor,
   dataTableHeaderBgColor,
   dataTableAlternativeColor,
-  dataTableAlternativeBgColor
+  dataTableAlternativeBgColor,
+  labelTextColor
 }
