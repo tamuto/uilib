@@ -20,7 +20,7 @@ align-items: center;
   row-gap: 16px;
 }
 
-${({ theme }) => mediaQuery(theme)} {
+${mediaQuery} {
   & >.label {
     display: none;
   }

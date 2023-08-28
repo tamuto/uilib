@@ -9,9 +9,6 @@ import {
   FormControlLabel,
   RadioGroup
 } from '@mui/material'
-import {
-  useTheme
-} from '@mui/material/styles'
 import { mediaQuery, requiredLabel, formFieldWidth } from '../utils/mediaQuery'
 
 const ResponsiveField = styled.div`
@@ -40,7 +37,7 @@ align-items: center;
   background-color: #eeeeee;
 }
 
-${({ theme }) => mediaQuery(theme)} {
+${mediaQuery} {
   & .label {
     display: none;
   }
@@ -54,7 +51,7 @@ const CustomTextField = styled(TextField)({
   }
 })
 
-const makeOpts = (matches, theme, lowerType, label, disabled, readonly, required) => {
+const makeOpts = (matches, lowerType, label, disabled, readonly, required) => {
   let opts = {
     type: lowerType,
     className: 'field',
@@ -73,7 +70,7 @@ const makeOpts = (matches, theme, lowerType, label, disabled, readonly, required
   }
   if (matches) {
     if (required) {
-      label = `${label}${requiredLabel(theme)}`
+      label = `${label}${requiredLabel()}`
     }
     opts = {
       ...opts,
@@ -83,8 +80,8 @@ const makeOpts = (matches, theme, lowerType, label, disabled, readonly, required
   return opts
 }
 
-const buildSelectField = (children, matches, theme, label, disabled, readonly, required, field, fieldState, props) => {
-  const opts = makeOpts(matches, theme, 'select', label, disabled, readonly, required)
+const buildSelectField = (children, matches, label, disabled, readonly, required, field, fieldState, props) => {
+  const opts = makeOpts(matches, 'select', label, disabled, readonly, required)
   return (
     <CustomTextField
       select
@@ -99,8 +96,8 @@ const buildSelectField = (children, matches, theme, label, disabled, readonly, r
   )
 }
 
-const buildCustomTextField = (matches, theme, lowerType, label, disabled, readonly, required, field, fieldState, props) => {
-  const opts = makeOpts(matches, theme, lowerType, label, disabled, readonly, required)
+const buildCustomTextField = (matches, lowerType, label, disabled, readonly, required, field, fieldState, props) => {
+  const opts = makeOpts(matches, lowerType, label, disabled, readonly, required)
   return <CustomTextField
     {...opts}
     {...field}
@@ -110,7 +107,7 @@ const buildCustomTextField = (matches, theme, lowerType, label, disabled, readon
   />
 }
 
-const buildSwitchField = (matches, theme, label, disabled, readonly, required, field, fieldState, props) => {
+const buildSwitchField = (matches, label, disabled, readonly, required, field, fieldState, props) => {
   const opts = {
     fullWidth: true,
     className: 'field',
@@ -122,7 +119,7 @@ const buildSwitchField = (matches, theme, label, disabled, readonly, required, f
     props.onChange = () => {}
   }
   if (matches & required) {
-    label = `${label}${requiredLabel(theme)}`
+    label = `${label}${requiredLabel()}`
   }
   return (
     <FormControl {...opts}>
@@ -190,21 +187,20 @@ const buildRadioField = (children, disabled, readonly, required, field, fieldSta
  * @returns
  */
 export const HookFormField = ({ children, type, label, nolabel, name, control, rules, disabled, readonly, ...props }) => {
-  const theme = useTheme()
-  const matches = nolabel ?? useMediaQuery(mediaQuery(theme))
+  const matches = nolabel ?? useMediaQuery(mediaQuery())
   const { field, fieldState } = useController({ control, name, rules })
   const required = rules ? 'required' in rules : false
 
   const buildComponent = () => {
     const lowerType = type.toLowerCase()
     if (lowerType === 'select') {
-      return buildSelectField(children, matches, theme, label, disabled, readonly, required, field, fieldState, props)
+      return buildSelectField(children, matches, label, disabled, readonly, required, field, fieldState, props)
     }
     if (['text', 'password', 'number', 'date', 'multiline'].includes(lowerType)) {
-      return buildCustomTextField(matches, theme, lowerType, label, disabled, readonly, required, field, fieldState, props)
+      return buildCustomTextField(matches, lowerType, label, disabled, readonly, required, field, fieldState, props)
     }
     if (lowerType === 'switch') {
-      return buildSwitchField(matches, theme, label, disabled, readonly, required, field, fieldState, props)
+      return buildSwitchField(matches, label, disabled, readonly, required, field, fieldState, props)
     }
     if (lowerType === 'radio') {
       return buildRadioField(children, disabled, readonly, required, field, fieldState, props)
@@ -221,7 +217,7 @@ export const HookFormField = ({ children, type, label, nolabel, name, control, r
   return (
     <ResponsiveField>
       <div className='label'>
-        {label}{required && <span className='required-label'>{requiredLabel(theme)}</span>}
+        {label}{required && <span className='required-label'>{requiredLabel()}</span>}
       </div>
       {component}
     </ResponsiveField>

@@ -69,7 +69,7 @@ const StyledDataTable = styled.div`
   }
 }
 
-${({ theme }) => mediaQuery(theme)} {
+${mediaQuery} {
   & .In4DataHead {
     display: none;
   }

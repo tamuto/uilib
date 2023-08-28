@@ -12,10 +12,6 @@ import {
   FormControlLabel
 } from '@mui/material'
 
-import {
-  useTheme
-} from '@mui/material/styles'
-
 const ResponsiveField = styled.div`
 display: flex;
 align-items: center;
@@ -42,7 +38,7 @@ align-items: center;
   background-color: #eeeeee;
 }
 
-${({ theme }) => mediaQuery(theme)} {
+${mediaQuery} {
   & .label {
     display: none;
   }
@@ -57,8 +53,7 @@ const CustomTextField = styled(TextField)({
 })
 
 export const FormField = forwardRef(function formFieldRef ({ children, label, nolabel, type, readonly, required, disabled, error, helperText, value, ...props }, ref) {
-  const theme = useTheme()
-  const matches = nolabel ?? useMediaQuery(mediaQuery(theme))
+  const matches = nolabel ?? useMediaQuery(mediaQuery())
 
   const makeOpts = (lowerType) => {
     let opts = {
@@ -83,7 +78,7 @@ export const FormField = forwardRef(function formFieldRef ({ children, label, no
     }
     if (matches) {
       if (required) {
-        label = `${label}${requiredLabel(theme)}`
+        label = `${label}${requiredLabel()}`
       }
       opts = {
         ...opts,
@@ -158,7 +153,7 @@ export const FormField = forwardRef(function formFieldRef ({ children, label, no
   return (
     <ResponsiveField>
       <div className='label'>
-        {label}{required && <span className='required-label'>{requiredLabel(theme)}</span>}
+        {label}{required && <span className='required-label'>{requiredLabel()}</span>}
       </div>
       {component}
     </ResponsiveField>
