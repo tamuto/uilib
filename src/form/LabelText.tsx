@@ -10,7 +10,7 @@ import {
 export type LabelTextProps = {
   label: string,
   text: string,
-  variant?: 'standard' | 'compact'
+  variant?: 'standard' | 'compact' | 'form'
 }
 
 const StyledLabelText = styled.div`
@@ -72,7 +72,47 @@ margin-bottom: 5px;
 }
 `
 
+const FormLabelText = styled.div`
+display: flex;
+align-items: center;
+
+& .label {
+  width: ${formFieldWidth};
+  text-align: right;
+  margin-right: 16px;
+}
+& .text {
+  width: 100%;
+}
+
+${mediaQuery} {
+  display: block;
+  & .label {
+    display: block;
+    width: auto;
+    text-align: left;
+    margin-right: 0;
+    font-size: 0.3em;
+  }
+  & .label::before {
+    content: '(';
+    margin-right: 2px;
+  }
+  & .label::after {
+    content: ')';
+    margin-left: 2px;
+  }
+`
+
 export const LabelText: FC<LabelTextProps> = ({ label, text, variant }) => {
+  if (variant && variant == 'form') {
+    return (
+      <FormLabelText>
+        <span className='label'>{label}</span>
+        <span className='text'>{text}</span>
+      </FormLabelText>
+    )
+  }
   if ((variant && variant == 'compact') || labelTextVariant() === 'compact') {
     return (
       <CompactLabelText>
