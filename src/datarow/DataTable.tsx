@@ -18,7 +18,6 @@ const StyledDataTable = styled.div`
   color: ${dataTableHeaderColor};
   display: flex;
   flex-direction: row;
-  gap: 0 5px;
   font-weight: bold;
 }
 
@@ -28,7 +27,6 @@ const StyledDataTable = styled.div`
   color: ${dataTableColor};
   display: flex;
   flex-direction: row;
-  gap: 0 5px;
 }
 
 & .In4DataRow:nth-of-type(odd) {
